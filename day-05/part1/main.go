@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 )
 
+// https://adventofcode.com/2018/day/5
 func main() {
 	bytes, _ := ioutil.ReadFile("../input.txt")
 	s := []byte{}
