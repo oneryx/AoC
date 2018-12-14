@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/oneryx/AoC/2018/util"
+	"github.com/oneryx/AoC/util"
 )
 
 // https://adventofcode.com/2018/day/2#part2

@@ -2,29 +2,31 @@ package util
 
 import (
 	"bufio"
+	"io/ioutil"
 	"log"
 	"os"
 	"strconv"
+	"strings"
 )
+
+// WriteToFile write string slice to file
+func WriteToFile(strs []string, filepath string) {
+	f, err := os.Create(filepath)
+	defer f.Close()
+	CheckErr(err)
+	w := bufio.NewWriter(f)
+	for _, str := range strs {
+		_, err := w.WriteString(str + "\n")
+		CheckErr(err)
+	}
+	w.Flush()
+}
 
 // ReadAsSlice read file as slice of string
 func ReadAsSlice(filepath string) []string {
-	result := []string{}
-
-	file, err := os.Open(filepath)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		result = append(result, scanner.Text())
-	}
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
-	}
-	return result
+	b, err := ioutil.ReadFile(filepath)
+	CheckErr(err)
+	return strings.Split(string(b), "\n")
 }
 
 // ReadAsIntSlice read file as slice of int
@@ -40,8 +42,13 @@ func ReadAsIntSlice(filepath string) []int {
 // Atoi wrapper of strconv.Atoi, just handled error
 func Atoi(str string) int {
 	v, err := strconv.Atoi(str)
+	CheckErr(err)
+	return v
+}
+
+// CheckErr log fatal if error
+func CheckErr(err error) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	return v
 }

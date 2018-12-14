@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/oneryx/AoC/2018/util"
+	"github.com/oneryx/AoC/util"
 )
 
 // https://adventofcode.com/2018/day/2

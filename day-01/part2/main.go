@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	util "github.com/oneryx/AoC/2018/util"
+	util "github.com/oneryx/AoC/util"
 )
 
 var sum = 0
