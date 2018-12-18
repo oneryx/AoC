@@ -52,3 +52,11 @@ func CheckErr(err error) {
 		log.Fatal(err)
 	}
 }
+
+// Abs Abs
+func Abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
